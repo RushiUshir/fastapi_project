@@ -16,3 +16,9 @@ class MarriageMatchResponse(BaseModel):
     analysis: Analysis
     kundli_match: str
     recommendation: str
+
+class VoiceCloneResponse(BaseModel):
+    file_name: str
+    file_path: str
+    content_type: str = "audio/wav"
+    message: str

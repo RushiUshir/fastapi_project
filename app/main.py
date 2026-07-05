@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from app.core.config import get_settings
 from app.core.database import Database
 from app.routes.marriage_routes import router as marriage_router
+from app.routes.speech_routes import router as speech_router
 
 settings = get_settings()
 
@@ -25,3 +26,4 @@ app = FastAPI(
 )
 
 app.include_router(marriage_router)
+app.include_router(speech_router)
