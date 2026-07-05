@@ -2,9 +2,9 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.api.v1.router import api_router
 from app.core.config import get_settings
 from app.core.database import Database
+from app.routes.marriage_routes import router as marriage_router
 
 settings = get_settings()
 
@@ -24,6 +24,4 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-
-app.include_router(api_router, prefix=settings.api_v1_prefix)
-
+app.include_router(marriage_router)

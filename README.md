@@ -7,19 +7,15 @@ Production-ready FastAPI starter with MongoDB, pagination, and a clean architect
 - FastAPI
 - PyMongo async client
 - Pydantic v2
+- Google Gemini API
 - Pytest
 
 ## Project structure
 
 ```text
 app/
-  api/                # HTTP layer
-  application/        # Use-case orchestration
   core/               # Settings and database bootstrap
-  domain/             # Entities and repository contracts
-  infrastructure/     # MongoDB implementations
   schemas/            # Request/response models
-  shared/             # Shared response utilities
 tests/
 ```
 
@@ -29,27 +25,28 @@ tests/
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
-copy .env.example .env
 uvicorn app.main:app --reload
 ```
 
-## API
+Create a `.env` file with:
 
-- `GET /health`
-- `POST /api/v1/items/`
-- `GET /api/v1/items/?page=1&page_size=10`
-- `GET /api/v1/items/{item_id}`
-- `PUT /api/v1/items/{item_id}`
-- `DELETE /api/v1/items/{item_id}`
+```env
+MONGODB_URI=mongodb://localhost:27017
+MONGODB_DATABASE=local
+MONGODB_ITEMS_COLLECTION=items
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.5-flash
+```
 
 ## Example payload
 
 ```json
 {
-  "name": "Laptop",
-  "description": "16GB RAM, 1TB SSD",
-  "price": 1499.99,
-  "quantity": 7
+    "name": "Laptop",
+    "description": "16GB RAM, 1TB SSD",
+    "price": 1499.99,
+    "quantity": 7
 }
 ```
+
 # fastapi_project
